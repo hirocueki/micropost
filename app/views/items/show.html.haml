@@ -1,6 +1,5 @@
-%p#notice= notice
+= render @item
 
-
-= link_to 'Edit', edit_item_path(@item)
+= link_to '編集', edit_user_item_path(@user, @item)
 \|
-= link_to 'Back', items_path
+= link_to 'もどる', @user

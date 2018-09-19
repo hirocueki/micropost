@@ -1,10 +1,15 @@
-= form_for @item do |f|
+= form_for [@user,@item] do |f|
   - if @item.errors.any?
     #error_explanation
       %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
       %ul
         - @item.errors.full_messages.each do |message|
           %li= message
-
+  .field
+    = f.text_field :title, placeholder: "タイトル", class: 'form-control'
+  .field
+    = text_field_tag 'item[tag_list]', @item.tag_list.join(','), placeholder: "タグ", class: 'form-control'
+  .field
+    = f.text_area :content, placeholder: "本文", class: 'form-control'
   .actions
-    = f.submit 'Save'
+    = f.submit '投稿'

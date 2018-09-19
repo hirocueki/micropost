@@ -1,0 +1,4 @@
+%h1= item.title
+
+.tag_list= render 'items/tag_list', tag_list: item.tag_list
+.content.border= markdown(item.content)

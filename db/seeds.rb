@@ -14,7 +14,7 @@ end
 users = User.order(:created_at).take(6)
 50.times do
   title = Faker::Lorem.question
-  content = Faker::Lorem.paragraphs(1, true)
+  content = Faker::Lorem.paragraphs(1)
   tag_list = Faker::Lorem.words(4, true)
   users.each { |user| user.items.create!(title: title, content: content, tag_list: tag_list) }
 end

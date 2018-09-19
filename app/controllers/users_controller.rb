@@ -5,7 +5,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @items_count = @user.items.count
+    @items = @user.items.page(params[:page])
   end
+
   private
   def set_user
     @user = User.find(params[:id])

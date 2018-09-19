@@ -1,2 +1,9 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+%h1
+  記事一覧
+  %span.badge.badge-primary= @items_count
+= paginate @items
+%ol.list-group
+  - @items.each do |item|
+    %li.list-group-item
+      = link_to item.title, user_item_path(@user, item)
+= paginate @items

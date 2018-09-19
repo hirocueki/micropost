@@ -4,6 +4,7 @@
     %nav.nav.navbar-nav.navbar-right
       %ul
       - if user_signed_in?
+        %li= link_to '投稿する', new_user_item_path(current_user), class: "btn"
         %li= link_to 'ログイン情報の編集', edit_user_registration_path, class: "btn"
         %li= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn"
       - else
