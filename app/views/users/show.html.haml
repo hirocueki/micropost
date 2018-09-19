@@ -1,9 +1,5 @@
 %h1
-  記事一覧
+  #{@user.email}さんの記事一覧
   %span.badge.badge-primary= @items_count
-= paginate @items
-%ol.list-group
-  - @items.each do |item|
-    %li.list-group-item
-      = link_to item.title, user_item_path(@user, item)
-= paginate @items
+
+= render template: 'items/index'

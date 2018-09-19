@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: %i(create destroy update)
-  before_action :set_user
+  before_action :set_user, only: %i(show edit update destroy)
   before_action :set_item, only: %i(show edit update destroy)
 
   def index
@@ -8,17 +8,18 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def new
-    @item = @user.items.build
+    @item = Item.new
   end
 
   def edit
   end
 
   def create
-    @item = @user.items.build(item_params)
+    @item = current_user.items.build(item_params)
 
     respond_to do |format|
       if @item.save
@@ -31,8 +32,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
       if @item.update(item_params)
@@ -61,6 +60,8 @@ class ItemsController < ApplicationController
     def set_item
       @item = @user.items.find(params[:id])
     end
+
+
 
     def item_params
       params.require(:item).permit(:title, :content, :tag_list)

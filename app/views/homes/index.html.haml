@@ -8,9 +8,13 @@
       %section.TagRanking
         TagRanking
     .col-md-8
-      = render 'users/feed'
+      = render template: 'items/index'
 - else
   .row
-    %aside.col-md-4
-    .col-md-8
-      = "Hello hackers !Q3は、エンジニアリングに関する知識を記録・共有するためのサービスです。コードを書いていて気づいたことや、自分がハマったあの仕様について、他のエンジニアと知見を共有しましょう ;)"
+    .card.text-white.bg-success.mb-3{ style: {max:{width: "18rem"}}}
+      .card-header
+        %h5.card-title Hello hackers !
+      .card-body
+        %p.card-text Q3は、エンジニアリングに関する知識を記録・共有するためのサービスです。コードを書いていて気づいたことや、自分がハマったあの仕様について、他のエンジニアと知見を共有しましょう ;)
+  .row
+    = link_to '参加ユーザー', users_path, class: "btn btn-outline-success"

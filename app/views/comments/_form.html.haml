@@ -1,0 +1,11 @@
+= form_for [@user,@item,@comment] do |f|
+  - if @comment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@comment.errors.count, "error")} prohibited this item from being saved:"
+      %ul
+        - @comment.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.text_area :content, placeholder: "コメント", class: 'form-control'
+  .actions
+    = f.submit '書き込む'

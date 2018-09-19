@@ -1,5 +1,21 @@
+= link_to @user.email, @user
+#{l @item.updated_at}に更新
+- if user_signed_in? && @user == current_user
+  = link_to '編集する', edit_user_item_path(@user, @item)
+  = link_to '削除する', user_item_path(@user, @item), method: :delete, data: {confirm: 'よろしいですか？'}
+
 = render @item
 
-= link_to '編集', edit_user_item_path(@user, @item)
-\|
+%hr
+
+= render template: 'comments/index'
+
+- if user_signed_in?
+  = render 'comments/form'
+- else
+  あなたもコメントしませんか？
+  %br
+  = link_to 'ユーザー登録はこちら', new_user_registration_path, class: 'btn btn-success'
+
+%hr
 = link_to 'もどる', @user

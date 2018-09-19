@@ -1,0 +1,9 @@
+- if @item.comments.any?
+  %ul.list-group
+  - @item.comments.each do |comment|
+    %li.list-group-item
+      = comment.content
+      = link_to comment.user.email, @user
+      .posted_by= l(comment.created_at)
+      - if comment.user == current_user
+        = link_to '削除する', [@user, @item, comment], method: :delete, data:{confirm: 'よろしいですか？'}
