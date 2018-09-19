@@ -8,7 +8,6 @@ end
 gem 'rails', '~> 5.1.6'
 gem 'sqlite3'
 gem 'puma', '~> 3.7'
-gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
@@ -22,6 +21,17 @@ end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'devise'
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
+gem 'haml-rails'
+gem 'faker'
+gem 'kaminari'
+gem 'sassc-rails'
+gem 'rails-i18n', '~> 5.1'

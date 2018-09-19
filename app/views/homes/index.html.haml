@@ -1,0 +1,16 @@
+- if user_signed_in?
+  .row
+    %aside.col-md-4
+      %section.trend
+        = Trend
+      %section.feed_ranking
+        = FeedRanking
+      %section.TagRanking
+        = TagRanking
+    .col-md-8
+      = render 'users/feed'
+- else
+  .row
+    %aside.col-md-4
+    .col-md-8
+      = "Hello hackers !Q3は、エンジニアリングに関する知識を記録・共有するためのサービスです。コードを書いていて気づいたことや、自分がハマったあの仕様について、他のエンジニアと知見を共有しましょう ;)"
