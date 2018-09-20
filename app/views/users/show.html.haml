@@ -1,5 +1,16 @@
-%h1
-  #{@user.email}さんの記事一覧
-  %span.badge.badge-primary= @items_count
-
-= render template: 'items/index'
+.row
+  %aside.col-md-4
+    %section.trend
+      Trend
+    %section.feed_ranking
+      FeedRanking
+    %section.TagRanking
+      TagRanking
+    %section.stats
+      = render 'shared/stats'
+  .col-md-8
+    = render 'follow_form' if user_signed_in?
+    %h1
+      #{@user.email}さんの記事一覧
+    %span.badge.badge-primary= @items_count
+    = render template: 'items/index'
