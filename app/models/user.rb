@@ -16,6 +16,10 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  def feed
+    Item.where("user_id IN (?) OR user_id = ?", following_ids, id)
+  end
+
   #ユーザーをフォローする
   def follow(other_user)
     following << other_user
