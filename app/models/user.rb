@@ -16,8 +16,12 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  # ユーザーのタイムラインを返す
   def feed
-    Item.where("user_id IN (?) OR user_id = ?", following_ids, id)
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    Item.where("user_id IN (#{following_ids})
+                OR user_id = :user_id", user_id: id)
   end
 
   #ユーザーをフォローする

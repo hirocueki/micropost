@@ -1,4 +1,6 @@
-%h1= item.title
-
-.tag_list= render 'items/tag_list', tag_list: item.tag_list
-.content.border= markdown(item.content)
+%li.list-group-item
+  = link_to item.user.email, item.user
+  %br
+  = link_to item.title, user_item_path(item.user, item)
+  %br
+  .tag_list= render 'items/tag_list', tag_list: item.tags

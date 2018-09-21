@@ -4,7 +4,10 @@
   = link_to '編集する', edit_user_item_path(@user, @item)
   = link_to '削除する', user_item_path(@user, @item), method: :delete, data: {confirm: 'よろしいですか？'}
 
-= render @item
+%h1= @item.title
+
+.tag_list= render 'items/tag_list', tag_list: @item.tag_list
+.content.border= markdown(@item.content)
 
 %hr
 

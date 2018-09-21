@@ -10,7 +10,8 @@
       %section.stats
         = render 'shared/stats'
     .col-md-8
-      = render template: 'items/index'
+      %h3 投稿された記事
+      = render 'shared/feed'
 - else
   .row
     .card.text-white.bg-success.mb-3{ style: {max:{width: "18rem"}}}
